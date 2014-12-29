@@ -3,8 +3,8 @@ function Faller() {
 	this.y = 300;
 	this.height = 40;
 	this.width = 40;
-	this.speed = 3;
-	this.dir = "right";
+	this.movement = 3;
+	this.dir = "none";
 	this.initDisplay();
 }
 
@@ -24,23 +24,23 @@ Faller.prototype = {
 		this.$faller.css('background-image', 'url("http://1.bp.blogspot.com/-MQE-zK1mVSE/UdSVGV3GP3I/AAAAAAAAAu8/EOsv__HnS-M/s512/spacestation.png")');
 		this.$faller.css('background-size', '40px 40px');
 		this.$faller.css('background-repeat', 'no-repeat');
-		
+
 		this.updateDisplay()
 	},
 
 	move: function(){
 		switch(this.dir) {
 			case 'right':
-				this.x += this.speed;
+				this.x += this.movement;
 				break;
 			case 'left':
-				this.x -= this.speed;
+				this.x -= this.movement;
 				break;
 			case 'up':
-				this.y += this.speed;
+				this.y -= this.movement;
 				break;
 			case 'down':
-				this.y -= this.speed;
+				this.y += this.movement;
 				break;
 		}
 		this.updateDisplay()
@@ -60,4 +60,18 @@ Game.prototype.loop = function(){
 $(document).ready(function() {
 	game = new Game();
 	setInterval(function() { game.loop(); }, 20);
+
+	Mousetrap.bind('left', function(){
+		game.faller.dir = 'left'
+	})
+	Mousetrap.bind('right', function(){
+		game.faller.dir = 'right'
+	})
+	Mousetrap.bind('up', function(){
+		game.faller.dir = 'up'
+	})
+	Mousetrap.bind('down', function(){
+		game.faller.dir = 'down'
+	})
+	
 });
