@@ -46,6 +46,7 @@ Orb.prototype = {
 		if (!this.inbounds()) {
 			this.$shot.css('display', 'none')
 			this.$shot.remove()
+			this.outOfBounds = true
 		}
 
 		this.updateDisplay();

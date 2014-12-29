@@ -38,6 +38,7 @@ Asteroid.prototype = {
 		if (!this.inbounds()) {
 			this.$meteor.css('display', 'none')
 			this.$meteor.remove()
+			this.outOfBounds = true
 		}
 
 		this.updateDisplay();

@@ -20,6 +20,12 @@ Game.prototype.loop = function(){
 	this.asteroids.forEach(function(asteroid){
 		asteroid.move();
 	});
+	this.shots = _(this.shots).reject(function(shot){
+		return shot.outOfBounds
+	});
+	this.asteroids = _(this.asteroids).reject(function(asteroid){
+		return asteroid.outOfBounds
+	});
 }
 
 Game.prototype.fire = function(){
