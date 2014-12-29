@@ -3,7 +3,7 @@ function Game() {
 	this.$gameboard = $('#gameboard');
 	this.faller = new Faller(this.$gameboard);
 	this.enemies = [new badGuy(this.$gameboard)];
-	this.shots = [];
+	this.shots = []; 
 	this.asteroids = [];
 	this.start = Date.now()
 	this.nextSpawn = this.start + 5000

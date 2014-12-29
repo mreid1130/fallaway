@@ -7,7 +7,7 @@ function badGuy(gameboard) {
 	this.movement = 2;
 	this.dir = "none";
 	this.initDisplay();
-}
+} 
 
 badGuy.prototype = {
 
