@@ -1,9 +1,10 @@
-function Faller() {
-	this.x = 300;
-	this.y = 300;
+function Faller(gameboard) {
+	this.$gameboard = gameboard;
+	this.x = this.$gameboard.width() / 2;
+	this.y = this.$gameboard.height() / 2;
 	this.height = 40;
 	this.width = 40;
-	this.movement = 3;
+	this.movement = 4;
 	this.dir = "none";
 	this.initDisplay();
 }
@@ -11,24 +12,20 @@ function Faller() {
 Faller.prototype = {
 
 	updateDisplay: function(){
-		this.$faller.css('top', this.y);
-		this.$faller.css('left', this.x);
+		this.$faller.css('top', this.y - this.height/2);
+		this.$faller.css('left', this.x - this.width/2);
 	},
 
 	initDisplay: function(){
 		this.$faller = $("<div class='faller'></div>")
 		$('#gameboard').append(this.$faller);
-		this.$faller.css('position', 'relative');
-		this.$faller.css('height', 40);
-		this.$faller.css('width', 40);
-		this.$faller.css('background-image', 'url("http://1.bp.blogspot.com/-MQE-zK1mVSE/UdSVGV3GP3I/AAAAAAAAAu8/EOsv__HnS-M/s512/spacestation.png")');
-		this.$faller.css('background-size', '40px 40px');
-		this.$faller.css('background-repeat', 'no-repeat');
 
 		this.updateDisplay()
 	},
 
 	move: function(){
+		oldX = this.x 
+		oldY = this.y
 		switch(this.dir) {
 			case 'right':
 				this.x += this.movement;
@@ -43,14 +40,22 @@ Faller.prototype = {
 				this.y += this.movement;
 				break;
 		}
+		if (!this.inbounds()) {
+			this.x = oldX;
+			this.y = oldY;
+		}
 		this.updateDisplay()
+	},
+
+	inbounds: function(){ 
+		return this.x > this.width/2 && this.x < this.$gameboard.width() - this.width/2 && this.y > this.height/2 && this.y < this.$gameboard.height() - this.height/2
 	}
 
 }
 
 function Game() {
-	this.gameboard = $('#gameboard');
-	this.faller = new Faller();
+	this.$gameboard = $('#gameboard');
+	this.faller = new Faller(this.$gameboard);
 }
 
 Game.prototype.loop = function(){

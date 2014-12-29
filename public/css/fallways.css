@@ -3,3 +3,12 @@
 	width: 600px;
 	border: black 1px solid;
 }
+
+.faller {
+	position: relative;
+	height: 40;
+	width: 40;
+	background-image: url('../imgs/spacestation.png');
+	background-size: 40px 40px;
+	background-repeat: no-repeat;
+}
