@@ -2,13 +2,24 @@
 function Game() {
 	this.$gameboard = $('#gameboard');
 	this.faller = new Faller(this.$gameboard);
-	this.enemy = new badGuy(this.$gameboard);
+	this.enemies = [new badGuy(this.$gameboard)];
+	this.shots = [];
 }
 
 Game.prototype.loop = function(){
-	this.faller.move()
-	this.enemy.track(this.faller)
-	this.enemy.move()
+	this.faller.move();
+	player = this.faller
+	this.enemies.forEach(function(enemy){
+		enemy.track(player);
+		enemy.move();
+	});
+	this.shots.forEach(function(shot){
+		shot.move();
+	});
+}
+
+Game.prototype.fire = function(){
+	this.shots.push(new Orb(this.$gameboard, this.faller))
 }
 
 $(document).ready(function() {
@@ -21,6 +32,10 @@ $(document).ready(function() {
 			game.faller.dir = direction
 		});
 	});
+
+	Mousetrap.bind('space', function(){
+		game.fire();
+	})
 	
 });
 

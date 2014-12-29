@@ -45,7 +45,7 @@ badGuy.prototype = {
 
 	track: function(faller){
 
-		xdiff = faller.x - this.x 
+		xdiff = faller.x - this.x
 		ydiff = faller.y - this.y
 
 		if (Math.abs(xdiff) > Math.abs(ydiff)){
