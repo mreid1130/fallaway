@@ -4,6 +4,7 @@ function Game() {
 	this.faller = new Faller(this.$gameboard);
 	this.enemies = [new badGuy(this.$gameboard)];
 	this.shots = [];
+	this.asteroids = [];
 }
 
 Game.prototype.loop = function(){
@@ -15,6 +16,9 @@ Game.prototype.loop = function(){
 	});
 	this.shots.forEach(function(shot){
 		shot.move();
+	});
+	this.asteroids.forEach(function(asteroid){
+		asteroid.move();
 	});
 }
 
