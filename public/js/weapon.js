@@ -38,10 +38,14 @@ Orb.prototype = {
 			case 'down':
 				this.y += this.movement;
 				break;
+			case 'none':
+				this.x += this.movement;
+				break;
 		}
 
 		if (!this.inbounds()) {
 			this.$shot.css('display', 'none')
+			this.$shot.remove()
 		}
 
 		this.updateDisplay();

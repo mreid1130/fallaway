@@ -33,3 +33,12 @@
 	width: 10;
 	position: absolute;
 }
+
+.asteroid {
+	background-image: url('../imgs/asteroid.png');
+	background-size: 25px 25px;
+	background-repeat: no-repeat;
+	height: 25;
+	width: 25;
+	position: absolute;
+}
