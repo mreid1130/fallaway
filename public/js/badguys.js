@@ -39,6 +39,11 @@ badGuy.prototype = {
 				this.y += this.movement;
 				break;
 		}
+		if (!this.inbounds()) {
+			this.$enemy.css('display', 'none')
+		} else {
+			this.$enemy.css('display', 'inline')
+		}
 
 		this.updateDisplay();
 	},
@@ -64,7 +69,33 @@ badGuy.prototype = {
 	},
 
 	inbounds: function(){ 
-			return this.x > this.width && this.x < this.$gameboard.width() - this.width && this.y > this.height && this.y < this.$gameboard.height() - this.height
+		return this.x > this.width/2 && this.x < this.$gameboard.width() && this.y > this.height/2 && this.y < this.$gameboard.height()
+	},
+
+	hit: function(shot){
+
+		return (this.x < shot.x + shot.width &&
+		   this.x + this.width > shot.x &&
+		   this.y < shot.y + shot.height &&
+		   this.height + this.y > shot.y);
+
+		// xdiff = this.x - shot.x 
+		// ydiff = this.y - shot.y 
+
+		// if (Math.abs(xdiff) <= this.width/2 && Math.abs(ydiff) <= this.height/2){
+		// 	return true
+		// } else {
+		// 	return false
+		// }
+	},
+
+	explode: function(){
+		enemy = this.$enemy
+		this.$enemy.css('background-image', 'url("http://th01.deviantart.net/fs71/200H/f/2012/146/7/b/fire_ball_2_png_by_dbszabo1-d515uz4.png")')
+		setTimeout(function(){ 
+			enemy.remove();
+			this.dead = true 
+		}, 250)
 	}
 
 };

@@ -45,9 +45,6 @@ Asteroid.prototype = {
 	},
 
 	inbounds: function(){ 
-		return this.x > this.width && 
-		this.x < this.$gameboard.width() + this.width/2 && 
-		this.y > this.height && 
-		this.y < this.$gameboard.height()+ this.height/2
+		return this.x > this.width/2 && this.x < this.$gameboard.width() && this.y > this.height/2 && this.y < this.$gameboard.height()
 	}
 }
