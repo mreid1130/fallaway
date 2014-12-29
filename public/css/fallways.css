@@ -1,14 +1,14 @@
 #gameboard {
 	height: 600px;
 	width: 800px;
-	border: black 1px solid;
+	border: black 2px solid;
 	background-image: url('../imgs/spaceboard.png');
 	background-size: 1024px 600px;
 	background-repeat: no-repeat;
 }
 
 .faller {
-	position: relative;
+	position: absolute;
 	height: 40;
 	width: 40;
 	background-image: url('../imgs/spacestation.png');
@@ -17,10 +17,19 @@
 }
 
 .badguy {
-	position: relative;
+	position: absolute;
 	height: 40;
 	width: 40;
 	background-image: url('../imgs/badthings/badguy1.png');
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
+}
+
+.orb {
+	background-image: url('../imgs/orb.png');
+	background-size: 10px 10px;
+	background-repeat: no-repeat;
+	height: 10;
+	width: 10;
+	position: absolute;
 }
