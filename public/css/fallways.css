@@ -1,7 +1,10 @@
 #gameboard {
 	height: 600px;
-	width: 600px;
+	width: 800px;
 	border: black 1px solid;
+	background-image: url('../imgs/spaceboard.png');
+	background-size: 1024px 600px;
+	background-repeat: no-repeat;
 }
 
 .faller {
@@ -9,6 +12,15 @@
 	height: 40;
 	width: 40;
 	background-image: url('../imgs/spacestation.png');
+	background-size: 40px 40px;
+	background-repeat: no-repeat;
+}
+
+.badguy {
+	position: relative;
+	height: 40;
+	width: 40;
+	background-image: url('../imgs/badthings/badguy1.png');
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 }
