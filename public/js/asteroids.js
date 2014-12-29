@@ -1,7 +1,7 @@
 function Asteroid(gameboard) {
 	this.$gameboard = gameboard;
-	this.x = Math.floor(Math.random() * this.$gameboard.width() + 1);
-	this.y = Math.floor(Math.random() * this.$gameboard.height() + 1);
+	this.x = 300 // Math.floor(Math.random() * this.$gameboard.width());
+	this.y = this.height
 	this.height = 25;
 	this.width = 25;
 	this.initDisplay();
@@ -22,18 +22,20 @@ Asteroid.prototype = {
 
 	move: function(){
 
-		xmove = Math.floor((Math.random() * 10) + 1);
-		ymove = Math.floor((Math.random() * 10) + 1);
-		if (this.x < this.$gameboard.width()/2){
-			this.x += xmove
-		} else {
-			this.x -= xmove
-		};
-		if (this.y < this.$gameboard.height()/2){
-			this.y -= ymove
-		} else {
-			this.y += ymove
-		}
+		xmove = Math.floor((Math.random() * 5) + 1);
+		ymove = Math.floor((Math.random() * 5) + 1);
+		// if (this.x < this.$gameboard.width()/2){
+		// 	this.x -= xmove
+		// } else {
+		// 	this.x += xmove
+		// };
+		// if (this.y < this.$gameboard.height()/2){
+		// 	this.y += ymove
+		// } else {
+		// 	this.y -= ymove
+		// }
+
+		this.y += ymove
 
 		if (!this.inbounds()) {
 			this.$meteor.css('display', 'none')
@@ -46,5 +48,25 @@ Asteroid.prototype = {
 
 	inbounds: function(){ 
 		return this.x > this.width/2 && this.x < this.$gameboard.width() && this.y > this.height/2 && this.y < this.$gameboard.height()
+	},
+
+	hit: function(shot){
+		return (this.x < shot.x + shot.width &&
+		   this.x + this.width > shot.x &&
+		   this.y < shot.y + shot.height &&
+		   this.height + this.y > shot.y);
+	},
+
+	explode: function(){
+		meteor = this.$meteor
+		this.$meteor.css('background-image', "url('public/imgs/explosion.png')")
+		this.strike = true
+		setTimeout(function(){ 
+			meteor.remove();
+		}, 250)
+	},
+
+	destroy: function(){
+		this.$meteor.remove()
 	}
 }
