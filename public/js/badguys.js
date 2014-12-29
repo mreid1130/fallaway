@@ -1,13 +1,13 @@
 function badGuy(gameboard) {
 	this.$gameboard = gameboard;
-	this.x = this.$gameboard.width();
-	this.y = this.$gameboard.height() / 2;
+	this.x = this.$gameboard.width() + Math.floor(Math.random() * 50 + 50)
+	this.y = Math.floor(Math.random() * this.$gameboard.height())
 	this.height = 40;
 	this.width = 40;
 	this.movement = 2;
 	this.dir = "none";
 	this.initDisplay();
-}
+} 
 
 badGuy.prototype = {
 
