@@ -77,6 +77,10 @@ Orb.prototype = {
 		this.x < this.$gameboard.width() + this.width/2&& 
 		this.y > this.height && 
 		this.y < this.$gameboard.height()+ this.height/2
+	},
+
+	destroy: function(){
+		this.$shot.remove()
 	}
 
 };

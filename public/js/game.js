@@ -6,17 +6,24 @@ function Game() {
 	this.shots = []; 
 	this.asteroids = [];
 	this.start = Date.now()
-	this.nextSpawn = this.start + 5000
+	this.nextBadGuySpawn = this.start + 5000
+	this.nextAsteroidSpawn = this.start + 3000
 }
 
 Game.prototype.loop = function(){
+
 	this.faller.move();
 	this.updateScore();
 	player = this.faller
 	gameshots = this.shots
-	if (Date.now() > this.nextSpawn) {
+	if (Date.now() > this.nextBadGuySpawn) {
 		this.enemies.push(new badGuy(this.$gameboard))
-		this.nextSpawn += 5000
+		this.nextBadGuySpawn += 5000
+	}
+
+	if (Date.now() > this.nextAsteroidSpawn){
+		this.asteroids.push(new Asteroid(this.$gameboard))
+		this.nextAsteroidSpawn += 3000
 	}
 
 	this.enemies.forEach(function(enemy){
@@ -42,9 +49,31 @@ Game.prototype.loop = function(){
 	this.shots.forEach(function(shot){
 		shot.move();
 	});
+
 	this.asteroids.forEach(function(asteroid){
-		asteroid.move();
+		gameshots.forEach(function(shot){
+			if (asteroid.hit(shot)){
+				asteroid.strike = true
+			};
+		})
+
+		if (asteroid.strike) {
+			asteroid.explode()
+		} else {
+			asteroid.move()
+		};
+
+		if (player.asteroidStrike(asteroid)) {
+			player.explode()
+			player.destroy()
+		}
+
 	});
+
+	this.asteroids = _(this.asteroids).reject(function(asteroid){
+		return asteroid.strike
+	});
+
 	this.shots = _(this.shots).reject(function(shot){
 		return shot.outOfBounds
 	});
