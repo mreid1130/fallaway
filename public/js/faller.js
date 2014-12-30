@@ -61,18 +61,18 @@ Faller.prototype = {
 	},
 
 	asteroidStrike: function(asteroid){
-		return (this.x < asteroid.x + asteroid.width &&
-		   this.x + this.width > asteroid.x &&
-		   this.y < asteroid.y + asteroid.height &&
-		   this.height + this.y > asteroid.y);
+		return (this.x < asteroid.x + asteroid.width/2 &&
+		   this.x + this.width/2 > asteroid.x &&
+		   this.y < asteroid.y + asteroid.height/2 &&
+		   this.height/2 + this.y > asteroid.y);
 	},
 
 	hit: function(shot){
 
-		return (this.x < shot.x + shot.width &&
-		   this.x + this.width > shot.x &&
-		   this.y < shot.y + shot.height &&
-		   this.height + this.y > shot.y);
+		return (this.x < shot.x + shot.width/2 &&
+		   this.x + this.width/2 > shot.x &&
+		   this.y < shot.y + shot.height/2 &&
+		   this.height/2 + this.y > shot.y);
 
 	},
 
