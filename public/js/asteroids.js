@@ -2,7 +2,7 @@ function Asteroid(gameboard) {
 	this.$gameboard = gameboard; 
 	this.height = 25;
 	this.width = 25;
-	this.y = this.height+50;
+	this.y = this.height;
 	this.x = Math.floor(Math.random() * this.$gameboard.width());
 	this.initDisplay();
 };
