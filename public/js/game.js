@@ -25,6 +25,7 @@ Game.prototype.loop = function(){
 	}
 
 	if (Date.now() > this.nextAsteroidSpawn){
+		console.log('hello')
 		this.asteroids.push(new Asteroid(this.$gameboard))
 		this.nextAsteroidSpawn += 3000
 	}

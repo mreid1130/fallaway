@@ -42,8 +42,8 @@ Faller.prototype = {
 				break;
 		}
 		if (!this.inbounds()) {
-			this.x = oldX;
-			this.y = oldY;
+			this.explode()
+			this.dead = true
 		}
 		this.updateDisplay()
 	},
