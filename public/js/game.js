@@ -125,10 +125,15 @@ $(document).ready(function() {
 		if (!game.faller.dead){
 			game.loop(); 
 		} else {
-			window.confirm("Game over, restarting...");
+			var reset = window.confirm("Game over, restarting...");
 			// location.reload(true);
 			// window.location.href = window.location.href;
-			window.location = window.location;
+			
+			if (reset) {
+				window.location = window.location;
+			} else {
+				window.location = window.location;
+			}
 		}
 	}, 20);
 
