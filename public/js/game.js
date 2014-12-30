@@ -182,7 +182,12 @@ $(document).ready(function() {
 	['left', 'right', 'up', 'down'].forEach(function(direction) {
 		Mousetrap.bind(direction, function(){
 			game.faller.dir = direction
-		});
+			game.faller.movement = 5
+		}, 'keydown');
+		Mousetrap.bind(direction, function(){
+			game.faller.dir = direction
+			game.faller.movement = 0
+		}, 'keyup');
 	});
 
 	Mousetrap.bind('space', function(){
