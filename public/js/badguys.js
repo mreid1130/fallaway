@@ -98,6 +98,11 @@ badGuy.prototype = {
 		}, 250)
 	},
 
+	fire: function(){
+		var shot = new EnemyOrb(this.$gameboard, this)
+		return shot;
+	},
+
 	destroy: function(){
 		this.$enemy.remove()
 	}

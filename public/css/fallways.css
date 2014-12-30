@@ -25,8 +25,17 @@
 	background-repeat: no-repeat;
 }
 
-.orb {
+.userorb {
 	background-image: url('../imgs/orb.png');
+	background-size: 10px 10px;
+	background-repeat: no-repeat;
+	height: 10;
+	width: 10;
+	position: absolute;
+}
+
+.enemyorb {
+	background-image: url('../imgs/badthings/enemyorb.png');
 	background-size: 10px 10px;
 	background-repeat: no-repeat;
 	height: 10;
