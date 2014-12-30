@@ -4,7 +4,7 @@ function badGuy(gameboard) {
 	this.y = Math.floor(Math.random() * this.$gameboard.height())
 	this.height = 40;
 	this.width = 40;
-	this.movement = 2;
+	this.movement = Math.floor(Math.random() * 3 + 1);
 	this.dir = "none";
 	this.initDisplay();
 } 
