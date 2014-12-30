@@ -1,9 +1,9 @@
 function Asteroid(gameboard) {
-	this.$gameboard = gameboard;
-	this.x = 300 // Math.floor(Math.random() * this.$gameboard.width());
-	this.y = this.height
+	this.$gameboard = gameboard; 
 	this.height = 25;
 	this.width = 25;
+	this.y = this.height;
+	this.x = Math.floor(Math.random() * this.$gameboard.width());
 	this.initDisplay();
 };
 
