@@ -67,6 +67,15 @@ Faller.prototype = {
 		   this.height + this.y > asteroid.y);
 	},
 
+	hit: function(shot){
+
+		return (this.x < shot.x + shot.width &&
+		   this.x + this.width > shot.x &&
+		   this.y < shot.y + shot.height &&
+		   this.height + this.y > shot.y);
+
+	},
+
 	destroy: function(){
 		this.$player.remove()
 	}

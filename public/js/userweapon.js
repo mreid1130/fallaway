@@ -1,4 +1,4 @@
-function Orb(gameboard, player) {
+function UserOrb(gameboard, player) {
 	this.$gameboard = gameboard;
 	this.x = player.x;
 	this.y = player.y;
@@ -9,7 +9,7 @@ function Orb(gameboard, player) {
 	this.initDisplay();
 };
 
-Orb.prototype = {
+UserOrb.prototype = {
 
 	updateDisplay: function(){
 		this.$shot.css('top', this.y - this.height/2);
@@ -17,7 +17,7 @@ Orb.prototype = {
 	},
 
 	initDisplay: function(){
-		this.$shot = $("<div class='orb'></div>")
+		this.$shot = $("<div class='userorb'></div>")
 		$('#gameboard').append(this.$shot);
 
 		this.updateDisplay()
@@ -51,26 +51,6 @@ Orb.prototype = {
 
 		this.updateDisplay();
 	},
-
-	// track: function(enemy){
-
-	// 	xdiff = enemy.x - this.x
-	// 	ydiff = enemy.y - this.y
-
-	// 	if (Math.abs(xdiff) > Math.abs(ydiff)){
-	// 		if (xdiff > 0){
-	// 			this.dir = 'right'
-	// 		} else {
-	// 			this.dir = 'left'
-	// 		};
-	// 	} else {
-	// 		if (ydiff > 0){
-	// 			this.dir = 'down'
-	// 		} else {
-	// 			this.dir = 'up'
-	// 		};
-	// 	};
-	// },
 
 	inbounds: function(){ 
 		return this.x > this.width && 

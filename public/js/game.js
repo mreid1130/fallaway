@@ -5,10 +5,12 @@ function Game() {
 	this.faller = new Faller(this.$gameboard);
 	this.enemies = [new badGuy(this.$gameboard)];
 	this.shots = []; 
+	this.badShots = [];
 	this.asteroids = [];
 	this.start = Date.now()
 	this.nextBadGuySpawn = this.start + 5000
 	this.nextAsteroidSpawn = this.start + 3000
+	this.enemyFireTime = this.start + 3000
 	this.scrollTollCollection = [];
 }
 
@@ -19,16 +21,31 @@ Game.prototype.loop = function(){
 	this.updateScore();
 	player = this.faller
 	gameshots = this.shots
+	badshots = this.badShots
+
 	if (Date.now() > this.nextBadGuySpawn) {
 		this.enemies.push(new badGuy(this.$gameboard))
 		this.nextBadGuySpawn += 5000
 	}
 
 	if (Date.now() > this.nextAsteroidSpawn){
-		console.log('hello')
 		this.asteroids.push(new Asteroid(this.$gameboard))
 		this.nextAsteroidSpawn += 3000
 	}
+
+	if (Date.now() > this.enemyFireTime) {
+		this.enemies.forEach(function(enemy){
+			badshots.push(enemy.fire())
+		})
+		this.enemyFireTime += 3000
+	}
+
+	badshots.forEach(function(shot){
+		if (player.hit(shot)){
+			player.explode();
+			player.dead = true
+		}
+	})
 
 	this.enemies.forEach(function(enemy){
 		
@@ -51,6 +68,10 @@ Game.prototype.loop = function(){
 	});
 
 	this.shots.forEach(function(shot){
+		shot.move();
+	});
+
+	this.badShots.forEach(function(shot){
 		shot.move();
 	});
 
@@ -81,13 +102,16 @@ Game.prototype.loop = function(){
 	this.shots = _(this.shots).reject(function(shot){
 		return shot.outOfBounds
 	});
+	this.badShots = _(this.badShots).reject(function(shot){
+		return shot.outOfBounds
+	});
 	this.asteroids = _(this.asteroids).reject(function(asteroid){
 		return asteroid.outOfBounds
 	});
 }
 
-Game.prototype.fire = function(){
-	this.shots.push(new Orb(this.$gameboard, this.faller))
+Game.prototype.userFire = function(){
+	this.shots.push(new UserOrb(this.$gameboard, this.faller))
 }
 
 Game.prototype.updateScore = function(){
@@ -114,7 +138,7 @@ $(document).ready(function() {
 	});
 
 	Mousetrap.bind('space', function(){
-		game.fire();
+		game.userFire();
 	})
 });
 
