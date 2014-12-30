@@ -127,7 +127,8 @@ $(document).ready(function() {
 		} else {
 			window.confirm("Game over, restarting...");
 			// location.reload(true);
-			window.location.href = window.location.href;
+			// window.location.href = window.location.href;
+			window.location = window.location;
 		}
 	}, 20);
 
