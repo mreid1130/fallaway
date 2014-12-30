@@ -126,7 +126,8 @@ $(document).ready(function() {
 			game.loop(); 
 		} else {
 			window.confirm("Game over, restarting...");
-			location.reload(true);
+			// location.reload(true);
+			window.location.href = window.location.href;
 		}
 	}, 20);
 
