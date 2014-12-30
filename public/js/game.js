@@ -130,9 +130,9 @@ $(document).ready(function() {
 			// window.location.href = window.location.href;
 			
 			if (reset) {
-				window.location = window.location;
+				history.go(0)
 			} else {
-				window.location = window.location;
+				history.go(0)
 			}
 		}
 	}, 20);
