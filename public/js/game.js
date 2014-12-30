@@ -7,16 +7,18 @@ function Game() {
 	this.shots = []; 
 	this.badShots = [];
 	this.asteroids = [];
+	this.walls = [];
 	this.start = Date.now()
 	this.nextBadGuySpawn = this.start + 5000
 	this.nextAsteroidSpawn = this.start + 3000
 	this.enemyFireTime = this.start + 3000
-	this.scrollTollCollection = [];
+	this.nextWallSpawn = this.start + 1000
+	this.scrollDir = 'left'
 }
 
 Game.prototype.loop = function(){
 
-
+	scrolldir = this.scrollDir
 	this.faller.move();
 	this.updateScore();
 	player = this.faller
@@ -38,6 +40,13 @@ Game.prototype.loop = function(){
 			badshots.push(enemy.fire())
 		})
 		this.enemyFireTime += 3000
+	}
+
+	if (Date.now() > this.nextWallSpawn){
+		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard))
+		this.nextWallSpawn += 1000
 	}
 
 	badshots.forEach(function(shot){
@@ -73,6 +82,33 @@ Game.prototype.loop = function(){
 
 	this.badShots.forEach(function(shot){
 		shot.move();
+	});
+
+	this.walls.forEach(function(wall){
+		gameshots.forEach(function(shot){
+			if (wall.hit(shot)){
+				wall.strike = true
+			};
+		})
+
+		if (wall.strike) {
+			wall.explode()
+		} else {
+			wall.move(scrolldir)
+		}
+
+		if (wall.offScreen) {
+			wall.destroy()
+		}
+
+	});
+
+	this.walls = _(this.walls).reject(function(wall){
+		return wall.strike
+	});
+
+	this.walls = _(this.walls).reject(function(wall){
+		return wall.offScreen
 	});
 
 	this.asteroids.forEach(function(asteroid){
@@ -118,22 +154,27 @@ Game.prototype.updateScore = function(){
 	$('#timer').html(Date.now() - this.start)
 }
 
+Game.prototype.barricadeGenerator = function(){
+
+}
+
 $(document).ready(function() {
 	game = new Game();
 
-	setInterval(function() { 
+	var gameloop = setInterval(function() { 
 		if (!game.faller.dead){
 			game.loop(); 
 		} else {
-			var reset = window.confirm("Game over, restarting...");
-			// location.reload(true);
-			// window.location.href = window.location.href;
+			// var reset = window.confirm("Game over, restarting...");
+			// // location.reload(true);
+			// // window.location.href = window.location.href;
 			
-			if (reset) {
-				history.go(0)
-			} else {
-				history.go(0)
-			}
+			// if (reset) {
+			// 	history.go(0)
+			// } else {
+			// 	history.go(0)
+			// }
+			clearInterval(gameloop)
 		}
 	}, 20);
 
