@@ -1,6 +1,7 @@
 
 function Game() {
 	this.$gameboard = $('#gameboard');
+	// this.fallers = [new Faller(this.$gameboard)];
 	this.faller = new Faller(this.$gameboard);
 	this.enemies = [new badGuy(this.$gameboard)];
 	this.shots = []; 
@@ -8,9 +9,11 @@ function Game() {
 	this.start = Date.now()
 	this.nextBadGuySpawn = this.start + 5000
 	this.nextAsteroidSpawn = this.start + 3000
+	this.scrollTollCollection = [];
 }
 
 Game.prototype.loop = function(){
+
 
 	this.faller.move();
 	this.updateScore();
@@ -65,7 +68,7 @@ Game.prototype.loop = function(){
 
 		if (player.asteroidStrike(asteroid)) {
 			player.explode()
-			player.destroy()
+			player.dead = true
 		}
 
 	});
@@ -92,7 +95,15 @@ Game.prototype.updateScore = function(){
 
 $(document).ready(function() {
 	game = new Game();
-	setInterval(function() { game.loop(); }, 20);
+
+	setInterval(function() { 
+		if (!game.faller.dead){
+			game.loop(); 
+		} else {
+			window.confirm("Game over, restarting...");
+			location.reload();
+		}
+	}, 20);
 
 
 	['left', 'right', 'up', 'down'].forEach(function(direction) {
@@ -104,6 +115,5 @@ $(document).ready(function() {
 	Mousetrap.bind('space', function(){
 		game.fire();
 	})
-	
 });
 

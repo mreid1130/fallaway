@@ -53,11 +53,10 @@ Faller.prototype = {
 	},
 
 	explode: function(){
-		player = this.$player
+		player1 = this.$player
 		this.$player.css('background-image', 'url("public/imgs/explosion.png")')
-		this.dead = true
 		setTimeout(function(){ 
-			player.remove();
+			player1.remove();
 		}, 250)
 	},
 
