@@ -5,6 +5,7 @@ function Wall(gameboard, dir){
 	this.movement = 5;
 	this.dir = dir;
 
+	// Change spawn point depending on which direction scroll is
 	if (this.dir == 'left'){
 		this.x = this.$gameboard.width() - this.width/2;
 		this.y = Math.floor(Math.random() * this.$gameboard.height());
