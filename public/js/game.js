@@ -110,7 +110,7 @@ Game.prototype.loop = function(){
 		if (wall.strike) {
 			wall.explode()
 		} else {
-			wall.move()
+			wall.move(scrolldir)
 		}
 
 		if (wall.offScreen) {

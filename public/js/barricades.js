@@ -12,10 +12,10 @@ function Wall(gameboard, dir){
 		this.x = this.width/2;
 		this.y = Math.floor(Math.random() * this.$gameboard.height());
 	} else if (this.dir == 'up') {
-		this.x = Math.floor(Math.random() * this.$gameboard.height());
+		this.x = Math.floor(Math.random() * this.$gameboard.width());
 		this.y = this.$gameboard.height() - this.height/2;
 	} else if (this.dir == 'down'){
-		this.x = Math.floor(Math.random() * this.$gameboard.height());
+		this.x = Math.floor(Math.random() * this.$gameboard.width());
 		this.y = this.height/2;
 	}
 
@@ -35,9 +35,9 @@ Wall.prototype = {
 		this.updateDisplay()
 	},
 
-	move: function(){
+	move: function(dir){
 
-		switch(this.dir) {
+		switch(dir) {
 			case 'right':
 				this.x += this.movement;
 				break;
