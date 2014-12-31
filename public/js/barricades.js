@@ -51,11 +51,11 @@ Wall.prototype = {
 		return this.x > this.width/2 && this.x < this.$gameboard.width() && this.y > this.height/2 && this.y < this.$gameboard.height()
 	},
 
-	hit: function(shot){
-		return (this.x < shot.x + shot.width &&
-		   this.x + this.width > shot.x &&
-		   this.y < shot.y + shot.height &&
-		   this.height + this.y > shot.y);
+	hit: function(object){
+		return (this.x < object.x + object.width/2 + this.width/2 &&
+		   this.x + this.width/2 + object.width/2 > object.x &&
+		   this.y < object.y + object.height/2 + this.height/2 &&
+		   this.height/2 + this.y + object.height/2> object.y);
 	},
 
 	explode: function(){
