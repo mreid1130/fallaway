@@ -13,6 +13,7 @@ function Game() {
 	this.nextAsteroidSpawn = this.start + 3000
 	this.enemyFireTime = this.start + 3000
 	this.nextWallSpawn = this.start + 1000
+	this.nextScrollSwitch = this.start + 10000
 	this.scrollDir = 'left'
 }
 
@@ -24,6 +25,11 @@ Game.prototype.loop = function(){
 	player = this.faller
 	gameshots = this.shots
 	badshots = this.badShots
+
+	if (Date.now() > this.nextScrollSwitch){
+		this.switchScroll()
+		this.nextScrollSwitch += 10000
+	}
 
 	if (Date.now() > this.nextBadGuySpawn) {
 		this.enemies.push(new badGuy(this.$gameboard))
@@ -43,20 +49,21 @@ Game.prototype.loop = function(){
 	}
 
 	if (Date.now() > this.nextWallSpawn){
-		this.walls.push(new Wall(this.$gameboard))
-		this.walls.push(new Wall(this.$gameboard))
-		this.walls.push(new Wall(this.$gameboard))
-		this.walls.push(new Wall(this.$gameboard))
-		this.walls.push(new Wall(this.$gameboard))
-		this.walls.push(new Wall(this.$gameboard))
-		this.walls.push(new Wall(this.$gameboard))
-		this.walls.push(new Wall(this.$gameboard))
-		this.walls.push(new Wall(this.$gameboard))
-		this.walls.push(new Wall(this.$gameboard))
-		this.walls.push(new Wall(this.$gameboard))
-		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
+		this.walls.push(new Wall(this.$gameboard, scrolldir))
 		this.nextWallSpawn += 1000
 	}
+
 
 	badshots.forEach(function(shot){
 		if (player.hit(shot)){
@@ -103,7 +110,7 @@ Game.prototype.loop = function(){
 		if (wall.strike) {
 			wall.explode()
 		} else {
-			wall.move(scrolldir)
+			wall.move()
 		}
 
 		if (wall.offScreen) {
@@ -111,18 +118,17 @@ Game.prototype.loop = function(){
 		}
 
 		if (wall.hit(player)){
-			player.x -= wall.movement
-		};
-
-		if (wall.hit(player)){
+			// If player hits left side of wall:
 			if (wall.x > player.x && (wall.y + wall.height < player.y + player.height ||  wall.y + wall.height > player.y + player.height)){
 				player.x -= wall.movement
+			// If player hits right side of wall:
 			} else if (wall.x < player.x && (wall.y + wall.height < player.y + player.height ||  wall.y + wall.height > player.y + player.height)) {
 				player.x += wall.movement
 			}
-
+			// If player hits bottom of wall:
 			if (wall.y > player.y && (wall.x + wall.width < player.x + player.width ||  wall.x + wall.width > player.x + player.width)){
 				player.y -= wall.movement
+			// If player hits top of wall:
 			} else if (wall.y < player.y && (wall.x + wall.width < player.x + player.width ||  wall.x + wall.width > player.x + player.width)) {
 				player.y += wall.movement
 			}
@@ -189,6 +195,11 @@ Game.prototype.resetGame = function(){
 	this.asteroids = [];
 	this.walls = [];
 	this.start = Date.now()
+}
+
+Game.prototype.switchScroll = function(){
+	var scrollArray = ['left', 'right', 'up', 'down']
+	this.scrollDir = scrollArray[Math.floor(Math.random() * 4)]
 }
 
 $(document).ready(function() {
