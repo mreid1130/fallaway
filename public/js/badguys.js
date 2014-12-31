@@ -73,20 +73,10 @@ badGuy.prototype = {
 	},
 
 	hit: function(shot){
-
-		return (this.x < shot.x + shot.width/2 &&
-		   this.x + this.width/2 > shot.x &&
-		   this.y < shot.y + shot.height/2 &&
-		   this.height/2 + this.y > shot.y);
-
-		// xdiff = this.x - shot.x 
-		// ydiff = this.y - shot.y 
-
-		// if (Math.abs(xdiff) <= this.width/2 && Math.abs(ydiff) <= this.height/2){
-		// 	return true
-		// } else {
-		// 	return false
-		// }
+		return (this.x < shot.x + shot.width/2 + this.width/2 &&
+		   this.x + this.width/2 + shot.width/2 > shot.x &&
+		   this.y < shot.y + shot.height/2 + this.height/2 &&
+		   this.height/2 + this.y + shot.height/2> shot.y);
 	},
 
 	explode: function(){

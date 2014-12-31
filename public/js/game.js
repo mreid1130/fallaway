@@ -46,6 +46,15 @@ Game.prototype.loop = function(){
 		this.walls.push(new Wall(this.$gameboard))
 		this.walls.push(new Wall(this.$gameboard))
 		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard))
+		this.walls.push(new Wall(this.$gameboard))
 		this.nextWallSpawn += 1000
 	}
 
@@ -101,6 +110,10 @@ Game.prototype.loop = function(){
 			wall.destroy()
 		}
 
+		if (wall.hit(player)){
+			player.x -= wall.movement
+		};
+
 	});
 
 	this.walls = _(this.walls).reject(function(wall){
@@ -154,8 +167,14 @@ Game.prototype.updateScore = function(){
 	$('#timer').html(Date.now() - this.start)
 }
 
-Game.prototype.barricadeGenerator = function(){
-
+Game.prototype.resetGame = function(){
+	this.faller = new Faller(this.$gameboard);
+	this.enemies = [new badGuy(this.$gameboard)];
+	this.shots = []; 
+	this.badShots = [];
+	this.asteroids = [];
+	this.walls = [];
+	this.start = Date.now()
 }
 
 $(document).ready(function() {
@@ -165,15 +184,6 @@ $(document).ready(function() {
 		if (!game.faller.dead){
 			game.loop(); 
 		} else {
-			// var reset = window.confirm("Game over, restarting...");
-			// // location.reload(true);
-			// // window.location.href = window.location.href;
-			
-			// if (reset) {
-			// 	history.go(0)
-			// } else {
-			// 	history.go(0)
-			// }
 			clearInterval(gameloop)
 		}
 	}, 20);
