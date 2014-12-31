@@ -68,6 +68,9 @@ Game.prototype.loop = function(){
 	badshots.forEach(function(shot){
 		if (player.hit(shot)){
 			player.explode();
+			setTimeout(function(){ 
+				player.destroy();
+			}, 250)
 			player.dead = true
 		}
 	})
@@ -82,6 +85,9 @@ Game.prototype.loop = function(){
 
 		if (enemy.dead) {
 			enemy.explode()
+			setTimeout(function(){ 
+				enemy.destroy();
+			}, 250)
 		} else {
 			enemy.track(player);
 			enemy.move();
@@ -109,6 +115,9 @@ Game.prototype.loop = function(){
 
 		if (wall.strike) {
 			wall.explode()
+			setTimeout(function(){ 
+				wall.destroy();
+			}, 250)
 		} else {
 			wall.move(scrolldir)
 		}
@@ -159,6 +168,9 @@ Game.prototype.loop = function(){
 
 		if (player.asteroidStrike(asteroid)) {
 			player.explode()
+			setTimeout(function(){ 
+				player.destroy();
+			}, 250)
 			player.dead = true
 		}
 
