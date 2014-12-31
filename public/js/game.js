@@ -114,6 +114,20 @@ Game.prototype.loop = function(){
 			player.x -= wall.movement
 		};
 
+		if (wall.hit(player)){
+			if (wall.x > player.x && (wall.y + wall.height < player.y + player.height ||  wall.y + wall.height > player.y + player.height)){
+				player.x -= wall.movement
+			} else if (wall.x < player.x && (wall.y + wall.height < player.y + player.height ||  wall.y + wall.height > player.y + player.height)) {
+				player.x += wall.movement
+			}
+
+			if (wall.y > player.y && (wall.x + wall.width < player.x + player.width ||  wall.x + wall.width > player.x + player.width)){
+				player.y -= wall.movement
+			} else if (wall.y < player.y && (wall.x + wall.width < player.x + player.width ||  wall.x + wall.width > player.x + player.width)) {
+				player.y += wall.movement
+			}
+		};
+
 	});
 
 	this.walls = _(this.walls).reject(function(wall){
