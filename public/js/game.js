@@ -111,18 +111,17 @@ Game.prototype.loop = function(){
 		}
 
 		if (wall.hit(player)){
-			player.x -= wall.movement
-		};
-
-		if (wall.hit(player)){
+			// If player hits left side of wall:
 			if (wall.x > player.x && (wall.y + wall.height < player.y + player.height ||  wall.y + wall.height > player.y + player.height)){
 				player.x -= wall.movement
+			// If player hits right side of wall:
 			} else if (wall.x < player.x && (wall.y + wall.height < player.y + player.height ||  wall.y + wall.height > player.y + player.height)) {
 				player.x += wall.movement
 			}
-
+			// If player hits bottom of wall:
 			if (wall.y > player.y && (wall.x + wall.width < player.x + player.width ||  wall.x + wall.width > player.x + player.width)){
 				player.y -= wall.movement
+			// If player hits top of wall:
 			} else if (wall.y < player.y && (wall.x + wall.width < player.x + player.width ||  wall.x + wall.width > player.x + player.width)) {
 				player.y += wall.movement
 			}
