@@ -70,25 +70,7 @@ Wall.prototype = {
 		   this.x + this.width/2 + object.width/2 > object.x &&
 		   this.y < object.y + object.height/2 + this.height/2 &&
 		   this.height/2 + this.y + object.height/2 > object.y);
-	},
-
-	touchLeft: function(object){
-		return (this.x > object.x + object.width/2 + this.width/2 &&	
-				this.y < object.y + object.height/2 + this.height/2 &&
-		   		this.height/2 + this.y + object.height/2 > object.y);
-	},
-
-	touchRight: function(object){
-
-	},
-
-	touchUp: function(object){
-
-	},
-
-	touchDown: function(object){
-
-	},
+	}, 
 
 	explode: function(){
 		barricade = this.$barricade

@@ -14,6 +14,9 @@ function Game() {
 	this.enemyFireTime = this.start + 3000
 	this.nextWallSpawn = this.start + 1000
 	this.nextScrollSwitch = this.start + 10000
+	this.asteroidKills = 0
+	this.wallKills = 0
+	this.enemyKills = 0
 	this.scrollDir = 'left'
 }
 
@@ -21,10 +24,12 @@ Game.prototype.loop = function(){
 
 	scrolldir = this.scrollDir
 	this.faller.move();
-	this.updateScore();
 	player = this.faller
 	gameshots = this.shots
 	badshots = this.badShots
+	asteroidKills = this.asteroidKills
+	wallKills = this.wallKills
+	enemyKills = this.enemyKills
 
 	if (Date.now() > this.nextScrollSwitch){
 		this.switchScroll()
@@ -70,7 +75,7 @@ Game.prototype.loop = function(){
 			player.explode();
 			setTimeout(function(){ 
 				player.destroy();
-			}, 250)
+			}, 250) 
 			player.dead = true
 		}
 	})
@@ -79,12 +84,14 @@ Game.prototype.loop = function(){
 		
 		gameshots.forEach(function(shot){
 			if (enemy.hit(shot)){
-				enemy.dead = true
+				enemy.dead = true;
 			};
 		})
 
 		if (enemy.dead) {
-			enemy.explode()
+			enemyKills += 1;
+			// console.log(enemyKills)
+			enemy.explode();
 			setTimeout(function(){ 
 				enemy.destroy();
 			}, 250)
@@ -109,12 +116,14 @@ Game.prototype.loop = function(){
 	this.walls.forEach(function(wall){
 		gameshots.forEach(function(shot){
 			if (wall.hit(shot)){
-				wall.strike = true
+				wall.strike = true;
 			};
 		})
 
 		if (wall.strike) {
-			wall.explode()
+			wallKills += 1;
+			// console.log(wallKills)
+			wall.explode();
 			setTimeout(function(){ 
 				wall.destroy();
 			}, 250)
@@ -127,17 +136,17 @@ Game.prototype.loop = function(){
 		}
 
 		if (wall.hit(player)){
-			// If player hits left side of wall:
+			// If player hits left side of wall, will be pushed left:
 			if (wall.x > player.x && (wall.y + wall.height < player.y + player.height ||  wall.y + wall.height > player.y + player.height)){
 				player.x -= wall.movement
-			// If player hits right side of wall:
+			// If player hits right side of wall, will be pushed right:
 			} else if (wall.x < player.x && (wall.y + wall.height < player.y + player.height ||  wall.y + wall.height > player.y + player.height)) {
 				player.x += wall.movement
 			}
-			// If player hits bottom of wall:
+			// If player hits bottom of wall, will be pushed down:
 			if (wall.y > player.y && (wall.x + wall.width < player.x + player.width ||  wall.x + wall.width > player.x + player.width)){
 				player.y -= wall.movement
-			// If player hits top of wall:
+			// If player hits top of wall, will be pushed up:
 			} else if (wall.y < player.y && (wall.x + wall.width < player.x + player.width ||  wall.x + wall.width > player.x + player.width)) {
 				player.y += wall.movement
 			}
@@ -156,14 +165,16 @@ Game.prototype.loop = function(){
 	this.asteroids.forEach(function(asteroid){
 		gameshots.forEach(function(shot){
 			if (asteroid.hit(shot)){
-				asteroid.strike = true
+				asteroid.strike = true;
 			};
 		})
 
 		if (asteroid.strike) {
-			asteroid.explode()
+			asteroidKills += 1;
+			// console.log(asteroidKills)
+			asteroid.explode();
 		} else {
-			asteroid.move()
+			asteroid.move();
 		};
 
 		if (player.asteroidStrike(asteroid)) {
@@ -189,6 +200,13 @@ Game.prototype.loop = function(){
 	this.asteroids = _(this.asteroids).reject(function(asteroid){
 		return asteroid.outOfBounds
 	});
+
+	this.asteroidKills = asteroidKills
+	this.wallKills = wallKills
+	this.enemyKills = enemyKills
+
+	this.updateScore();
+	
 }
 
 Game.prototype.userFire = function(){
@@ -197,6 +215,9 @@ Game.prototype.userFire = function(){
 
 Game.prototype.updateScore = function(){
 	$('#timer').html(Date.now() - this.start)
+	$('#enemykills').html(this.enemyKills)
+	$('#asteroidkills').html(this.asteroidKills)
+	$('#wallkills').html(this.wallKills)
 }
 
 Game.prototype.resetGame = function(){
