@@ -6,7 +6,7 @@ get '/' do
 	end
 end
 
-post '/signup' do
+post '/players/new' do
 	player = Player.new(params)
 	if player.save
 		session[:player_id] = player.id 
@@ -16,8 +16,8 @@ post '/signup' do
 	redirect '/'
 end
 
-post '/login' do 
-	@player = Player.find_by_email(params[:email])
+post '/players' do 
+	@player = Player.find_by(username: params[:username])
 	if @player && @player.authenticate(params[:password])
 		session[:player_id] = @player.id
 		redirect '/'
