@@ -8,7 +8,7 @@ function Game() {
 	this.badShots = [];
 	this.asteroids = [];
 	this.walls = [];
-	this.start = Date.now()
+	this.start = Date.now();
 	this.nextBadGuySpawn = this.start + 5000
 	this.nextAsteroidSpawn = this.start + 3000
 	this.enemyFireTime = this.start + 3000
@@ -248,17 +248,20 @@ $(document).ready(function() {
 
 
 	['left', 'right', 'up', 'down'].forEach(function(direction) {
-		Mousetrap.bind(direction, function(){
-			game.faller.dir = direction
-			game.faller.movement = 5
+		Mousetrap.bind(direction, function(e){
+			e.preventDefault();
+			game.faller.dir = direction;
+			game.faller.movement = 5;
 		}, 'keydown');
-		Mousetrap.bind(direction, function(){
-			game.faller.dir = direction
-			game.faller.movement = 0
+		Mousetrap.bind(direction, function(e){
+			e.preventDefault();
+			game.faller.dir = direction;
+			game.faller.movement = 0;
 		}, 'keyup');
 	});
 
-	Mousetrap.bind('space', function(){
+	Mousetrap.bind('space', function(e){
+		e.preventDefault();
 		game.userFire();
 	})
 });
