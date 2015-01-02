@@ -28,8 +28,11 @@
 </head>
 <body>
   <div id="sidebar">
-    <% if logged_in? %>
-      <h3> Welcome, <%= current_player.username %>!</h3>
+    <% if @logged_in %>
+      <h3> Welcome, <%= @current_player.username %>!</h3>
+      <form action="/logout" method="GET">
+        <input type="submit" value="Log Out">
+      </form>
     <% else %>
       <div id="signup">
         <h1>Sign Up!</h1>

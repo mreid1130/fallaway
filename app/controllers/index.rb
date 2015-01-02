@@ -1,8 +1,10 @@
 get '/' do 
 	if session[:player_id]
+		@logged_in = logged_in?
+		@current_player = current_player
 		erb :index
 	else
-		erb :login
+		erb :index
 	end
 end
 
@@ -18,7 +20,9 @@ end
 
 post '/players' do 
 	@player = Player.find_by(username: params[:username])
-	if @player && @player.authenticate(params[:password])
+	p '*' * 100
+	p @player
+	if @player && @player.authenticate(params[:password_hash])
 		session[:player_id] = @player.id
 		redirect '/'
 	else
