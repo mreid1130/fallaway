@@ -90,7 +90,7 @@ Game.prototype.loop = function(){
 
 		if (enemy.dead) {
 			enemyKills += 1;
-			// console.log(enemyKills)
+			console.log(enemyKills)
 			enemy.explode();
 			setTimeout(function(){ 
 				enemy.destroy();
@@ -122,7 +122,7 @@ Game.prototype.loop = function(){
 
 		if (wall.strike) {
 			wallKills += 1;
-			// console.log(wallKills)
+			console.log(wallKills)
 			wall.explode();
 			setTimeout(function(){ 
 				wall.destroy();
@@ -215,9 +215,9 @@ Game.prototype.userFire = function(){
 
 Game.prototype.updateScore = function(){
 	$('#timer').html(Date.now() - this.start)
-	$('#enemykills').html(this.enemyKills)
-	$('#asteroidkills').html(this.asteroidKills)
-	$('#wallkills').html(this.wallKills)
+	$('#enemyKills').html(this.enemyKills)
+	$('#asteroidKills').html(this.asteroidKills)
+	$('#wallKills').html(this.wallKills)
 }
 
 Game.prototype.resetGame = function(){
