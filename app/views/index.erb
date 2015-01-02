@@ -1,25 +1,17 @@
 <html>
 
-	<head>
-		<title>FallSpace</title>
-		<link href="./public/css/fallways.css" rel="stylesheet" type="text/css">
-		<script src="http://ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-		<script src="./public/js/faller.js"></script>
-		<script src="./public/js/badguys.js"></script>
-		<script src="./public/js/userweapon.js"></script>
-		<script src="./public/js/enemyweapon.js"></script>
-		<script src="./public/js/asteroids.js"></script>
-		<script src="./public/js/barricades.js"></script>
-		<script src="./public/js/game.js"></script>
-		<script src="./public/js/mousetrap.js"></script>
-		<script src="./public/js/underscore.js"></script>
-	</head>
-
 	<body>
-		<div id="gameboard">
+		<div id="game_container">
+			<div id="gameboard"></div>
+
+			<div id="scoreboard">
+				<p>Current Score: <span id="timer">0</span></p>
+				<p>Enemy Kills: <span id="enemykills">0</span></p>
+				<p>Asteroids Destroyed: <span id="asteroidkills">0</span></p>
+				<p>Walls Destroyed: <span id="wallkills">0</span></p>
+				<input type="submit" id="reset" value="Reset">
+			</div>
 		</div>
-		<p>Current Score: <span id="timer">0</span></p>
-		<button id='reset' type='button'>Replay</button>
 	</body>
 
 </html>

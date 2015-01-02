@@ -1,22 +1,27 @@
 get '/' do 
+
 	if session[:player_id]
-		erb :index
-	else
-		erb :login
+		@current_player = session[:player_id]
 	end
+
+	erb :index
 end
 
-post '/signup' do
+post '/update-stats' do
+
+end
+
+post '/players/new' do
+
 	player = Player.new(params)
 	if player.save
-		session[:player_id] = player.id 
-	else
-		return "Error"
+		session[:player_id] = player.id
 	end
 	redirect '/'
+
 end
 
-post '/login' do 
+post '/players' do 
 	@player = Player.find_by_email(params[:email])
 	if @player && @player.authenticate(params[:password])
 		session[:player_id] = @player.id
