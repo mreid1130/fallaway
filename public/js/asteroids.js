@@ -59,7 +59,7 @@ Asteroid.prototype = {
 
 	explode: function(){
 		meteor = this.$meteor
-		this.$meteor.css('background-image', "url('public/imgs/explosion.png')")
+		this.$meteor.css('background-image', "url('/imgs/explosion.png')")
 		this.strike = true
 		setTimeout(function(){ 
 			meteor.remove();

@@ -54,7 +54,7 @@ Faller.prototype = {
 
 	explode: function(){
 		player1 = this.$player
-		this.$player.css('background-image', 'url("public/imgs/explosion.png")')
+		this.$player.css('background-image', 'url("/imgs/explosion.png")')
 		setTimeout(function(){ 
 			player1.remove();
 		}, 250)

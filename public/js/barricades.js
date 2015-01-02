@@ -74,7 +74,7 @@ Wall.prototype = {
 
 	explode: function(){
 		barricade = this.$barricade
-		this.$barricade.css('background-image', "url('public/imgs/explosion.png')")
+		this.$barricade.css('background-image', "url('/imgs/explosion.png')")
 		this.strike = true
 		setTimeout(function(){ 
 			barricade.remove();
