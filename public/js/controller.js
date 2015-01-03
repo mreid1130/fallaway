@@ -1,6 +1,6 @@
 $(document).ready(function() {
 
-	gameloop = function(){
+	gameloop = function(game){
 
 		var fallspaceloop = setInterval(function() { 
 			if (!game.faller.dead){
@@ -14,17 +14,10 @@ $(document).ready(function() {
 					$('#gameboard').remove()
 					$('body').prepend("<div id='gameboard'></div>")
 					game = new Game();
-					gameloop();
+					gameloop(game);
 				})
 			}
 		}, 20);
-	}
-
-	$('#start').on('click', function(){
-		$('#start').remove()
-		game = new Game();
-		gameloop();
-
 
 		['left', 'right', 'up', 'down'].forEach(function(direction) {
 			Mousetrap.bind(direction, function(){
@@ -40,6 +33,12 @@ $(document).ready(function() {
 		Mousetrap.bind('space', function(){
 			game.userFire();
 		})
+	}
+
+	$('#start').on('click', function(){
+		$('#start').remove()
+		game = new Game();
+		gameloop(game);
 
 	})
 
