@@ -1,0 +1,33 @@
+#sidebar {
+	width: 15%;
+	height: 100%;
+	display: inline-block;
+	float: right;
+}
+
+#game_container {
+	display: inline-block;
+}
+
+#reset {
+
+}
+
+#startshell {
+	height: 600px;
+	width: 800px;
+	border: black 2px solid;
+	background-image: url('../imgs/spaceboard.png');
+	background-size: 1024px 600px;
+	background-repeat: no-repeat;
+	opacity: .75;
+}
+
+#start {
+	width: 286px;
+	height: 98px;
+	left: 300px;
+	width: 400px;
+	background-image: url('../imgs/startButton.png');
+	background-repeat: no-repeat;,
+}

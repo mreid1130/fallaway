@@ -235,31 +235,40 @@ Game.prototype.switchScroll = function(){
 	this.scrollDir = scrollArray[Math.floor(Math.random() * 4)]
 }
 
+
 $(document).ready(function() {
-	game = new Game();
 
-	var gameloop = setInterval(function() { 
-		if (!game.faller.dead){
-			game.loop(); 
-		} else {
-			clearInterval(gameloop)
-		}
-	}, 20);
+	$('#start').on('click', function(){
+		game = new Game();
+
+		var gameloop = setInterval(function() { 
+			if (!game.faller.dead){
+				game.loop(); 
+			} else {
+				clearInterval(gameloop)
+				$reset = $("<div id='startshell'></div>")
+				$resetButton = $("<div id='start'></div>")
+				$('#gameboard').append($reset);
+				$('#gameboard').append($resetButton);
+			}
+		}, 20);
 
 
-	['left', 'right', 'up', 'down'].forEach(function(direction) {
-		Mousetrap.bind(direction, function(){
-			game.faller.dir = direction
-			game.faller.movement = 5
-		}, 'keydown');
-		Mousetrap.bind(direction, function(){
-			game.faller.dir = direction
-			game.faller.movement = 0
-		}, 'keyup');
-	});
+		['left', 'right', 'up', 'down'].forEach(function(direction) {
+			Mousetrap.bind(direction, function(){
+				game.faller.dir = direction
+				game.faller.movement = 5
+			}, 'keydown');
+			Mousetrap.bind(direction, function(){
+				game.faller.dir = direction
+				game.faller.movement = 0
+			}, 'keyup');
+		});
 
-	Mousetrap.bind('space', function(){
-		game.userFire();
+		Mousetrap.bind('space', function(){
+			game.userFire();
+		})
 	})
+
 });
 
