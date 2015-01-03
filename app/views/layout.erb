@@ -30,8 +30,12 @@
 </head>
 <body>
   <div id="sidebar">
-    <% if @logged_in %>
+    <% if logged_in? %>
       <h3> Welcome, <%= @current_player.username %>!</h3>
+      <h4> <a href='/'>Play FallSpace</a> </h4>
+      <h4> <a href='/players/<%=@current_player.id%>'>My Profile</a> </h4>
+      <h4> <a href='/leaderboard'>FallSpace Leaderboard</a> </h4>
+      <h4> <a href='/rankings'>FallSpace Rankings</a> </h4>
       <form action="/logout" method="GET">
         <input type="submit" value="Log Out">
       </form>

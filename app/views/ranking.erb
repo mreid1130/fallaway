@@ -1,1 +1,19 @@
 <!-- All-time Rankings for total asteroid/badguy/walls killed, total score, games played, average score, etc. -->
+
+<div id="ranking_container">
+
+	<h1>FallSpace Player Rankings:</h1>
+	<h3>Most Enemies Killed </h3>
+	<% @ordered_total_enemies.each_with_index do |player, i| %>
+		<p><%= i+1 %>. <%= player.username%> -- <%= player.total_badguys %></p>
+	<% end %>
+	<h3>Most Asteroids Destroyed </h3>
+	<% @ordered_total_asteroids.each_with_index do |player, i| %>
+		<p><%= i+1 %>. <%= player.username%> -- <%= player.total_asteroids %></p>
+	<% end %>
+	<h3>Most Walls Destroyed </h3>
+	<% @ordered_total_walls.each_with_index do |player, i| %>
+		<p><%= i+1 %>. <%= player.username%> -- <%= player.total_walls %></p>
+	<% end %>
+
+</div>
