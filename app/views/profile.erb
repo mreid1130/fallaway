@@ -1,0 +1,15 @@
+<div class="profile_container">
+	<h1><%= @player.username %></h1>
+	<h3>Single Game High Scores:</h3>
+	<ul>
+		<li>Enemies Killed: <%= @player.high_badguys %></li>
+		<li>Asteroids Destroyed: <%= @player.high_asteroids %></li>
+		<li>Walls Destroyed: <%= @player.high_walls %></li>
+	</ul>
+	<h3>Total Destruction:</h3>
+	<ul>
+		<li>Total Enemies Killed: <%= @player.total_badguys %></li>
+		<li>Total Asteroids Destroyed: <%= @player.total_asteroids %></li>
+		<li>Total Walls Destroyed: <%= @player.total_walls %></li>
+	</ul>
+</div>
