@@ -214,7 +214,8 @@ Game.prototype.userFire = function(){
 }
 
 Game.prototype.updateScore = function(){
-	$('#timer').html(Date.now() - this.start)
+	this.score = Date.now() - this.start
+	$('#timer').html(this.score)
 	$('#enemyKills').html(this.enemyKills)
 	$('#asteroidKills').html(this.asteroidKills)
 	$('#wallKills').html(this.wallKills)
