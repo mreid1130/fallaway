@@ -8,7 +8,7 @@ function Game() {
 	this.badShots = [];
 	this.asteroids = [];
 	this.walls = [];
-	this.start = Date.now()
+	this.start = Date.now();
 	this.nextBadGuySpawn = this.start + 5000
 	this.nextAsteroidSpawn = this.start + 3000
 	this.enemyFireTime = this.start + 3000
@@ -90,7 +90,7 @@ Game.prototype.loop = function(){
 
 		if (enemy.dead) {
 			enemyKills += 1;
-			// console.log(enemyKills)
+			console.log(enemyKills)
 			enemy.explode();
 			setTimeout(function(){ 
 				enemy.destroy();
@@ -122,7 +122,7 @@ Game.prototype.loop = function(){
 
 		if (wall.strike) {
 			wallKills += 1;
-			// console.log(wallKills)
+			console.log(wallKills)
 			wall.explode();
 			setTimeout(function(){ 
 				wall.destroy();
@@ -215,9 +215,9 @@ Game.prototype.userFire = function(){
 
 Game.prototype.updateScore = function(){
 	$('#timer').html(Date.now() - this.start)
-	$('#enemykills').html(this.enemyKills)
-	$('#asteroidkills').html(this.asteroidKills)
-	$('#wallkills').html(this.wallKills)
+	$('#enemyKills').html(this.enemyKills)
+	$('#asteroidKills').html(this.asteroidKills)
+	$('#wallKills').html(this.wallKills)
 }
 
 Game.prototype.resetGame = function(){
@@ -234,41 +234,3 @@ Game.prototype.switchScroll = function(){
 	var scrollArray = ['left', 'right', 'up', 'down']
 	this.scrollDir = scrollArray[Math.floor(Math.random() * 4)]
 }
-
-
-$(document).ready(function() {
-
-	$('#start').on('click', function(){
-		game = new Game();
-
-		var gameloop = setInterval(function() { 
-			if (!game.faller.dead){
-				game.loop(); 
-			} else {
-				clearInterval(gameloop)
-				$reset = $("<div id='startshell'></div>")
-				$resetButton = $("<div id='start'></div>")
-				$('#gameboard').append($reset);
-				$('#gameboard').append($resetButton);
-			}
-		}, 20);
-
-
-		['left', 'right', 'up', 'down'].forEach(function(direction) {
-			Mousetrap.bind(direction, function(){
-				game.faller.dir = direction
-				game.faller.movement = 5
-			}, 'keydown');
-			Mousetrap.bind(direction, function(){
-				game.faller.dir = direction
-				game.faller.movement = 0
-			}, 'keyup');
-		});
-
-		Mousetrap.bind('space', function(){
-			game.userFire();
-		})
-	})
-
-});
-

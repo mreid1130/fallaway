@@ -10,7 +10,13 @@
 }
 
 #reset {
-
+	border: black 1px solid;
+/*	width: 286px;
+	height: 98px;
+	left: 300px;
+	width: 400px;
+	background-image: url('../imgs/startButton.png');
+	background-repeat: no-repeat;*/
 }
 
 #startshell {
@@ -24,10 +30,18 @@
 }
 
 #start {
-	width: 286px;
+	border: black 1px solid;
+	text-align:center;
+/*	width: 286px;
 	height: 98px;
 	left: 300px;
 	width: 400px;
 	background-image: url('../imgs/startButton.png');
-	background-repeat: no-repeat;,
+	background-repeat: no-repeat;*/
+}
+
+#start:hover{
+	background-color: black;
+	color:white;
+	text-align:center;
 }

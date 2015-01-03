@@ -81,7 +81,7 @@ badGuy.prototype = {
 
 	explode: function(){
 		enemy = this.$enemy
-		this.$enemy.css("background-image", "url('public/imgs/explosion.png')")
+		this.$enemy.css("background-image", "url('/imgs/explosion.png')")
 		this.dead = true
 		setTimeout(function(){ 
 			enemy.remove();
