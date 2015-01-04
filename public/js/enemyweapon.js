@@ -4,7 +4,7 @@ function EnemyOrb(gameboard, enemy) {
 	this.y = enemy.y;
 	this.height = 10;
 	this.width = 10;
-	this.movement = 3;
+	this.movement = enemy.movement+2;
 	this.dir = enemy.dir;
 	this.initDisplay();
 }
