@@ -126,13 +126,20 @@ Game.prototype.loop = function(){
 		// if a shot hits a wall, the wall.strike will be true
 		gameshots.forEach(function(shot){
 			if (wall.hit(shot)){
+				wallKills += 1; // Adds to player's score total upon strike
+				wall.strike = true;
+			};
+		})
+
+		badshots.forEach(function(shot){
+			if (wall.hit(shot)){
+				wallKills += 1; // Adds to player's score total upon strike
 				wall.strike = true;
 			};
 		})
 
 		// checks if wall.strike is true
 		if (wall.strike) {
-			wallKills += 1; // Adds to player's score total upon strike
 			wall.explode(); // explosion animation
 			setTimeout(function(){ 
 				wall.destroy(); // waits .25 seconds to allow explosion to render on screen, then removes element
@@ -179,12 +186,18 @@ Game.prototype.loop = function(){
 	this.asteroids.forEach(function(asteroid){
 		gameshots.forEach(function(shot){
 			if (asteroid.hit(shot)){
+				asteroidKills += 1; // Adds to player's score total upon strike
+				asteroid.strike = true;
+			};
+		})
+
+		badshots.forEach(function(shot){
+			if (asteroid.hit(shot)){
 				asteroid.strike = true;
 			};
 		})
 
 		if (asteroid.strike) {
-			asteroidKills += 1; // Adds to player's score total upon strike
 			asteroid.explode();
 			setTimeout(function(){ 
 				asteroid.destroy(); // waits .25 seconds to allow explosion to render on screen, then removes element
