@@ -60,6 +60,8 @@ post '/players/update' do
 		@player.update_attribute(:total_walls, old_walls+params[:walls].to_i)
 		@player.update_attribute(:total_badguys, old_badguys+params[:kills].to_i)
 
+		Game.create(score: params[:score], asteroids: params[:asteroids], walls: params[:walls], badguys: params[:kills], player_id: @player.id)
+
 	end
 end
 
