@@ -21,16 +21,6 @@
 	display: inline-block;
 }
 
-#reset {
-	border: black 1px solid;
-/*	width: 286px;
-	height: 98px;
-	left: 300px;
-	width: 400px;
-	background-image: url('../imgs/startButton.png');
-	background-repeat: no-repeat;*/
-}
-
 .sidebar-head {
 	color:white;
 }
@@ -44,30 +34,22 @@
 	color:red;
 }
 
-/*#startshell {
-	height: 600px;
-	width: 800px;
-	border: black 2px solid;
-	background-image: url('../imgs/spaceboard.png');
-	background-size: 1024px 600px;
-	background-repeat: no-repeat;
-	opacity: .75;
-}*/
-
-/*.start-button {
-	text-decoration: none;
-	color: white;
-}
-
-.start-button:hover {
-	text-decoration: none;
-	color:red;
-}*/
-
 #start {
 	height: 50px;
 	width:50px;
 	background-image: url('/imgs/launch-button.png');
 	background-size:50px 50px;
 	margin: auto;
+}
+
+.leaderboard_container {
+	display: inline-block;
+}
+
+.profile_container {
+	display: inline-block;
+}
+
+.ranking_container {
+	display: inline-block;
 }
