@@ -2,20 +2,22 @@
 	width: 15%;
 	height: 600px;
 	display: inline-block;
-	float: right;
+	float: left;
 	background-color: black;
-	border: 1px black solid;
+	border: 2px black solid;
 	text-align: center;
 }
 
-.scoreboard {}
+#scoreboard {
+	color:white;
+}
 
 .avatar {
 	border-radius: 100%;
 	border: 2px red solid;
 }
 
-#game_container {
+.game_container {
 	display: inline-block;
 }
 
@@ -33,12 +35,12 @@
 	color:white;
 }
 
-a {
+.sidebar-button {
 	color:white;
 	text-decoration: none;
 }
 
-a:hover {
+.sidebar-button:hover {
 	color:red;
 }
 
@@ -52,19 +54,20 @@ a:hover {
 	opacity: .75;
 }*/
 
-#start {
-	border: black 1px solid;
-	text-align:center;
-/*	width: 286px;
-	height: 98px;
-	left: 300px;
-	width: 400px;
-	background-image: url('../imgs/startButton.png');
-	background-repeat: no-repeat;*/
+/*.start-button {
+	text-decoration: none;
+	color: white;
 }
 
-#start:hover{
-	background-color: black;
-	color:white;
-	text-align:center;
+.start-button:hover {
+	text-decoration: none;
+	color:red;
+}*/
+
+#start {
+	height: 50px;
+	width:50px;
+	background-image: url('/imgs/launch-button.png');
+	background-size:50px 50px;
+	margin: auto;
 }

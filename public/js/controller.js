@@ -23,7 +23,7 @@ $(document).ready(function() {
 				})
 
 				// create a reset button and make it appear on screen
-				$resetButton = $("<div id='start'>Reset</div>")
+				$resetButton = $("<div id='start'></div>")
 				$('#scoreboard').append($resetButton);
 
 				// when the reset button is clicked...
@@ -57,8 +57,9 @@ $(document).ready(function() {
 	}
 
 	// When the start button is click, a new game is initiated
-	$('#start').on('click', function(){
-		$('#start').remove()
+	$('#start').on('click', function(e){
+		e.preventDefault();
+		$('#start').remove();
 		game = new Game();
 		gameloop(game);
 
