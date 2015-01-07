@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -31,7 +31,8 @@
 <body>
   <div id="sidebar">
     <% if logged_in? %>
-      <h3> Welcome, <%= @current_player.username %>!</h3>
+      <h3 class="sidebar-head"> Welcome, <%= @current_player.username %>!</h3>
+      <img class="avatar" src="<%= @current_player.gravatar %>"/>
       <h4> <a href='/'>Play FallSpace</a> </h4>
       <h4> <a href='/players/<%=@current_player.id%>'>My Profile</a> </h4>
       <h4> <a href='/leaderboard'>FallSpace Leaderboard</a> </h4>
