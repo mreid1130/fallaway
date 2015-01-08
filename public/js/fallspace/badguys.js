@@ -7,7 +7,7 @@ function badGuy(gameboard) {
 	this.movement = Math.floor(Math.random() * 3 + 1);
 	this.dir = "none";
 	this.initDisplay();
-} 
+}
 
 badGuy.prototype = {
 
@@ -68,7 +68,7 @@ badGuy.prototype = {
 		};
 	},
 
-	inbounds: function(){ 
+	inbounds: function(){
 		return this.x > this.width/2 && this.x < this.$gameboard.width() && this.y > this.height/2 && this.y < this.$gameboard.height()
 	},
 
@@ -81,9 +81,9 @@ badGuy.prototype = {
 
 	explode: function(){
 		enemy = this.$enemy
-		this.$enemy.css("background-image", "url('/imgs/explosion.png')")
+		this.$enemy.css("background-image", "url('/imgs/fallspace/explosion.png')")
 		this.dead = true
-		setTimeout(function(){ 
+		setTimeout(function(){
 			enemy.remove();
 		}, 250)
 	},

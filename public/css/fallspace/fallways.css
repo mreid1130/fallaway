@@ -2,7 +2,7 @@
 	height: 600px;
 	width: 800px;
 	border: black 2px solid;
-	background-image: url('/imgs/spaceboard.png');
+	background-image: url('/imgs/fallspace/spaceboard.png');
 	background-size: 1024px 600px;
 	background-repeat: no-repeat;
 	display: inline-block;
@@ -13,7 +13,7 @@
 	position: absolute;
 	height: 40px;
 	width: 40px;
-	background-image: url('/imgs/spacestation.png');
+	background-image: url('/imgs/fallspace/spacestation.png');
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 }
@@ -22,13 +22,13 @@
 	position: absolute;
 	height: 40px;
 	width: 40px;
-	background-image: url('/imgs/badthings/badguy1.png');
+	background-image: url('/imgs/fallspace/badthings/badguy1.png');
 	background-size: 40px 40px;
 	background-repeat: no-repeat;
 }
 
 .userorb {
-	background-image: url('/imgs/orb.png');
+	background-image: url('/imgs/fallspace/orb.png');
 	background-size: 10px 10px;
 	background-repeat: no-repeat;
 	height: 10px;
@@ -37,7 +37,7 @@
 }
 
 .enemyorb {
-	background-image: url('/imgs/badthings/enemyorb.png');
+	background-image: url('/imgs/fallspace/badthings/enemyorb.png');
 	background-size: 10px 10px;
 	background-repeat: no-repeat;
 	height: 10px;
@@ -46,7 +46,7 @@
 }
 
 .asteroid {
-	background-image: url('/imgs/asteroid.png');
+	background-image: url('/imgs/fallspace/asteroid.png');
 	background-size: 25px 25px;
 	background-repeat: no-repeat;
 	height: 25px;
@@ -55,7 +55,7 @@
 }
 
 .wall {
-	background-image: url('/imgs/wall.gif');
+	background-image: url('/imgs/fallspace/wall.gif');
 	background-size: 32px 32px;
 	background-repeat: no-repeat;
 	height: 32px;

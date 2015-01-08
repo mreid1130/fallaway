@@ -61,7 +61,7 @@ Wall.prototype = {
 		this.updateDisplay()
 	},
 
-	inbounds: function(){ 
+	inbounds: function(){
 		return this.x > this.width/2 && this.x < this.$gameboard.width() && this.y > this.height/2 && this.y < this.$gameboard.height()
 	},
 
@@ -70,13 +70,13 @@ Wall.prototype = {
 		   this.x + this.width/2 + object.width/2 > object.x &&
 		   this.y < object.y + object.height/2 + this.height/2 &&
 		   this.height/2 + this.y + object.height/2 > object.y);
-	}, 
+	},
 
 	explode: function(){
 		barricade = this.$barricade
-		this.$barricade.css('background-image', "url('/imgs/explosion.png')")
+		this.$barricade.css('background-image', "url('/imgs/fallspace/explosion.png')")
 		this.strike = true
-		setTimeout(function(){ 
+		setTimeout(function(){
 			barricade.remove();
 		}, 250)
 	},

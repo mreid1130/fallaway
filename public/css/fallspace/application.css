@@ -1,6 +1,6 @@
 #sidebar {
 	width: 15%;
-	height: 600px;
+	height: 700px;
 	display: inline-block;
 	float: left;
 	background-color: black;
@@ -37,7 +37,7 @@
 #start {
 	height: 50px;
 	width:50px;
-	background-image: url('/imgs/launch-button.png');
+	background-image: url('/imgs/fallspace/launch-button.png');
 	background-size:50px 50px;
 	margin: auto;
 }

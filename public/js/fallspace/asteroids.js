@@ -1,5 +1,5 @@
 function Asteroid(gameboard) {
-	this.$gameboard = gameboard; 
+	this.$gameboard = gameboard;
 	this.height = 25;
 	this.width = 25;
 	this.y = this.height;
@@ -46,7 +46,7 @@ Asteroid.prototype = {
 		this.updateDisplay();
 	},
 
-	inbounds: function(){ 
+	inbounds: function(){
 		return this.x > this.width/2 && this.x < this.$gameboard.width() && this.y > this.height/2 && this.y < this.$gameboard.height()
 	},
 
@@ -59,9 +59,9 @@ Asteroid.prototype = {
 
 	explode: function(){
 		meteor = this.$meteor
-		this.$meteor.css('background-image', "url('/imgs/explosion.png')")
+		this.$meteor.css('background-image', "url('/imgs/fallspace/explosion.png')")
 		this.strike = true
-		setTimeout(function(){ 
+		setTimeout(function(){
 			meteor.remove();
 		}, 250)
 	},

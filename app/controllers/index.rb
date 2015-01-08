@@ -1,18 +1,28 @@
-get '/' do 
-	erb :index
+get '/' do
+	redirect '/fallspace'
+end
+
+get '/fallspace' do
+	@fallspace = true
+ erb :fallspace
+end
+
+get '/footballurrito' do
+	@footballurrito = true
+ erb :footballurrito
 end
 
 post '/players/new' do
 	player = Player.new(params)
 
 	if player.save
-		session[:player_id] = player.id 
+		session[:player_id] = player.id
 	end
 
 	redirect '/'
 end
 
-post '/players' do 
+post '/players' do
 	@player = Player.find_by(username: params[:username])
 
 	if @player && @player.authenticate(params[:password_hash])

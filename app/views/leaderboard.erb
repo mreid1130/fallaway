@@ -2,7 +2,7 @@
 
 <div id="leaderboard_container">
 
-	<h1>Single Game Leaderboards:</h1>
+	<h1>FallSpace Single Game Leaderboards:</h1>
 	<h3>High Score </h3>
 	<% @ordered_score.each_with_index do |player, i| %>
 		<p><%= i+1 %>. <%= player.username%> -- <%= player.high_score %></p>

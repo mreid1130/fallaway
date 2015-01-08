@@ -48,14 +48,14 @@ Faller.prototype = {
 		this.updateDisplay()
 	},
 
-	inbounds: function(){ 
+	inbounds: function(){
 		return this.x > this.width/2 && this.x < this.$gameboard.width() && this.y > this.height/2 && this.y < this.$gameboard.height()
 	},
 
 	explode: function(){
 		player1 = this.$player
-		this.$player.css('background-image', 'url("/imgs/explosion.png")')
-		setTimeout(function(){ 
+		this.$player.css('background-image', 'url("/imgs/fallspace/explosion.png")')
+		setTimeout(function(){
 			player1.remove();
 		}, 250)
 	},
@@ -69,7 +69,7 @@ Faller.prototype = {
 	},
 
 	hit: function(shot){
-		
+
 		return (this.x < shot.x + shot.width/2 + this.width/2 &&
 		   this.x + this.width/2 + shot.width/2 > shot.x &&
 		   this.y < shot.y + shot.height/2 + this.height/2 &&

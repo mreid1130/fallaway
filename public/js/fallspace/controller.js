@@ -17,8 +17,8 @@ $(document).ready(function() {
 				  data: {
 				  	score: game.score,
 				  	asteroids: game.asteroidKills,
-					walls: game.wallKills,
-					kills: game.enemyKills
+						walls: game.wallKills,
+						kills: game.enemyKills
 				  }
 				})
 

@@ -1,53 +1,58 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!--
-    normalize.css removes cross-browser differences in defaults, e.g.,
-    differences in how form elements appear between Firefox and IE
-    See: http://necolas.github.com/normalize.css/
-  -->
-  <!-- <link rel="stylesheet" href="/css/normalize.css"> -->
-  <!--
-    application.css is where you put your styles
-  -->
-  <link rel="stylesheet" href="/css/application.css">
-  <link rel="stylesheet" href="/css/fallways.css">
 
-  <script src="//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js"></script>
-  <script src="/js/faller.js"></script>
-  <script src="/js/badguys.js"></script>
-  <script src="/js/userweapon.js"></script>
-  <script src="/js/enemyweapon.js"></script>
-  <script src="/js/asteroids.js"></script>
-  <script src="/js/barricades.js"></script>
-  <script src="/js/game.js"></script>
-  <script src="/js/mousetrap.js"></script>
-  <script src="/js/underscore.js"></script>
-  <script src="/js/controller.js"></script>
+  <link rel="stylesheet" href="/css/fallspace/normalize.css">
+
+  <!-- Fallspace CSS -->
+  <link rel="stylesheet" href="/css/fallspace/application.css">
+  <link rel="stylesheet" href="/css/fallspace/fallways.css">
+
+  <!-- Footballurrito CSS -->
+  <link rel="stylesheet" type="text/css" href="/css/footballurrito/application.css">
+
+  <!-- Fallspace JS Files -->
+
+  <!-- Footballurrito JS Files -->
+
+  <!-- JS Libraries used by both games -->
+  <script language="JavaScript" type="text/javascript" src="/js/fallspace/mousetrap.js"></script>
+  <script language="JavaScript" type="text/javascript" src="/js/fallspace/underscore.js"></script>
+  <script language="JavaScript" type="text/javascript" src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
 
 
-  <title>FallSpace</title>
+  <title>FallSpace/Footballurrito</title>
 </head>
 <body>
   <div id="sidebar">
     <% if logged_in? %>
       <h3 class="sidebar-head"> Welcome, <%= @current_player.username %>!</h3>
       <img class="avatar" src="<%= @current_player.gravatar %>"/>
-      <h4> <a class="sidebar-button" href='/'>Play FallSpace</a> </h4>
+      <h4> <a class="sidebar-button" href='/fallspace'>Play FallSpace</a> </h4>
+      <h4> <a class="sidebar-button" href='/footballurrito'>Play Footballurrito</a> </h4>
       <h4> <a class="sidebar-button" href='/players/<%=@current_player.id%>'>My Profile</a> </h4>
       <h4> <a class="sidebar-button" href='/leaderboard'>FallSpace Leaderboard</a> </h4>
       <h4> <a class="sidebar-button" href='/rankings'>FallSpace Rankings</a> </h4>
       <form action="/logout" method="GET">
         <input type="submit" value="Log Out">
       </form>
-      <div id="scoreboard">
-        <h3>-- Scoreboard --</h3>
-        <p>Current Score: <span id="timer">0</span></p>
-        <p>Bad guys killed: <span id="enemyKills">0</span></p>
-        <p>Asteroids destroyed: <span id="asteroidKills">0</span></p>
-        <p>Walls destroyed: <span id="wallKills">0</span></p>
-        <div id='start'></div>
-      </div>
+      <% if @footballurrito or @fallspace %>
+        <div id="scoreboard">
+          <% if @fallspace %>
+            <h3>-- Scoreboard --</h3>
+            <p>Current Score: <span id="timer">0</span></p>
+            <p>Bad guys killed: <span id="enemyKills">0</span></p>
+            <p>Asteroids destroyed: <span id="asteroidKills">0</span></p>
+            <p>Walls destroyed: <span id="wallKills">0</span></p>
+          <% elsif @footballurrito %>
+            <h3>-- Scoreboard --</h3>
+            <p>Current Score: <span>0</span></p>
+            <p>Burritos Eaten: <span>0</span></p>
+            <p>Opponents Tackled: <span>0</span></p>
+          <% end %>
+          <div id='start'></div>
+        </div>
+      <% end %>
     <% else %>
       <div id="signup">
         <h1 class="sidebar-text">Sign Up</h1>
