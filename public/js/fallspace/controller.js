@@ -13,7 +13,7 @@ $(document).ready(function() {
 				// ajax call to update player score/high scores in the database.
 				$.ajax({
 				  type: 'POST',
-				  url: '/players/update',
+				  url: '/players/fallspace/update',
 				  data: {
 				  	score: game.score,
 				  	asteroids: game.asteroidKills,

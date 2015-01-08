@@ -1,9 +1,10 @@
 class Player < ActiveRecord::Base
-	has_many :games
+	has_many :fallspacegames
+	has_many :footballurritogames
 	validates :email, :username, {presence: true, uniqueness: true}
 	validates :password_hash, presence: true
 	validates :email, format: {with: /\S+@{1}\S+[.]\D{2,}/, message: 'is not a valid email address'}
-	
+
 	before_save :gravatar_src
 
 	def gravatar_src

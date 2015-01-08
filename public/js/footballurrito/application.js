@@ -9,6 +9,16 @@ $(document).ready(function() {
 
 				clearInterval(footballurritoloop)
 
+				$.ajax({
+								  type: 'POST',
+								  url: '/players/footballurrito/update',
+								  data: {
+								  	score: game.score,
+								  	burritos: game.burritosEaten,
+										opponents: game.opponentsTackled,
+								  }
+								})
+
 				$resetButton = $("<div id='start'></div>")
 				$('#scoreboard').append($resetButton);
 

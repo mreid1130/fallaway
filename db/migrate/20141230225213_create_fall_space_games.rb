@@ -1,6 +1,6 @@
-class CreateGames < ActiveRecord::Migration
+class CreateFallSpaceGames < ActiveRecord::Migration
   def change
-  	create_table :games do |t|
+  	create_table :fallspacegames do |t|
   		t.belongs_to :player
   		t.integer :score, default: 0
   		t.integer :asteroids, default: 0
