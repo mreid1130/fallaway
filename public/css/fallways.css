@@ -6,6 +6,7 @@
 	background-size: 1024px 600px;
 	background-repeat: no-repeat;
 	display: inline-block;
+	position: relative;
 }
 
 .faller {

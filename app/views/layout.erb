@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <!-- 
+  <!--
     normalize.css removes cross-browser differences in defaults, e.g.,
     differences in how form elements appear between Firefox and IE
     See: http://necolas.github.com/normalize.css/
@@ -31,33 +31,42 @@
 <body>
   <div id="sidebar">
     <% if logged_in? %>
-      <h3> Welcome, <%= @current_player.username %>!</h3>
-      <h4> <a href='/'>Play FallSpace</a> </h4>
-      <h4> <a href='/players/<%=@current_player.id%>'>My Profile</a> </h4>
-      <h4> <a href='/leaderboard'>FallSpace Leaderboard</a> </h4>
-      <h4> <a href='/rankings'>FallSpace Rankings</a> </h4>
+      <h3 class="sidebar-head"> Welcome, <%= @current_player.username %>!</h3>
+      <img class="avatar" src="<%= @current_player.gravatar %>"/>
+      <h4> <a class="sidebar-button" href='/'>Play FallSpace</a> </h4>
+      <h4> <a class="sidebar-button" href='/players/<%=@current_player.id%>'>My Profile</a> </h4>
+      <h4> <a class="sidebar-button" href='/leaderboard'>FallSpace Leaderboard</a> </h4>
+      <h4> <a class="sidebar-button" href='/rankings'>FallSpace Rankings</a> </h4>
       <form action="/logout" method="GET">
         <input type="submit" value="Log Out">
       </form>
+      <div id="scoreboard">
+        <h3>-- Scoreboard --</h3>
+        <p>Current Score: <span id="timer">0</span></p>
+        <p>Bad guys killed: <span id="enemyKills">0</span></p>
+        <p>Asteroids destroyed: <span id="asteroidKills">0</span></p>
+        <p>Walls destroyed: <span id="wallKills">0</span></p>
+        <div id='start'></div>
+      </div>
     <% else %>
       <div id="signup">
-        <h1>Sign Up!</h1>
+        <h1 class="sidebar-text">Sign Up</h1>
         <form action="/players/new" method="POST">
-          <label for="username">Username: </label><br>
+          <label class="sidebar-text" for="username">Username: </label><br>
           <input type="text" id="username" placeholder="Pick a username..." name="username"><br>
-          <label for="password">Password: </label><br>
+          <label class="sidebar-text" for="password">Password: </label><br>
           <input type="password" id="password" placeholder="Pick a password..." name="password_hash"><br>
-          <label for="email">Email: </label><br>
+          <label class="sidebar-text" for="email">Email: </label><br>
           <input type="text" id="email" placeholder="What's your email?" name="email"><br>
           <input type="submit" value="Sign Up">
         </form>
       </div>
       <div id="login">
-        <h1>Login</h1>
+        <h1 class="sidebar-text">Login</h1>
         <form action="/players" method="POST">
-          <label for="username">Username: </label><br>
+          <label class="sidebar-text" for="username">Username: </label><br>
           <input type="text" placeholder="Enter username..." name="username"><br>
-          <label for="password">Password: </label><br>
+          <label class="sidebar-text" for="password">Password: </label><br>
           <input type="password" id="password" placeholder="Enter password..." name="password_hash"><br>
           <input type="submit" value="Login">
         </form>

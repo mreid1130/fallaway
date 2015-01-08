@@ -1,47 +1,63 @@
 #sidebar {
 	width: 15%;
-	height: 100%;
-	display: inline-block;
-	float: right;
-}
-
-#game_container {
-	display: inline-block;
-}
-
-#reset {
-	border: black 1px solid;
-/*	width: 286px;
-	height: 98px;
-	left: 300px;
-	width: 400px;
-	background-image: url('../imgs/startButton.png');
-	background-repeat: no-repeat;*/
-}
-
-#startshell {
 	height: 600px;
-	width: 800px;
-	border: black 2px solid;
-	background-image: url('../imgs/spaceboard.png');
-	background-size: 1024px 600px;
-	background-repeat: no-repeat;
-	opacity: .75;
+	display: inline-block;
+	float: left;
+	background-color: black;
+	border: 2px black solid;
+	text-align: center;
+}
+
+#scoreboard {
+	color:white;
+}
+
+.avatar {
+	border-radius: 100%;
+	border: 2px red solid;
+}
+
+.game_container {
+	display: inline-block;
+}
+
+.sidebar-head {
+	color:white;
+}
+
+.sidebar-button {
+	color:white;
+	text-decoration: none;
+}
+
+.sidebar-button:hover {
+	color:red;
 }
 
 #start {
-	border: black 1px solid;
-	text-align:center;
-/*	width: 286px;
-	height: 98px;
-	left: 300px;
-	width: 400px;
-	background-image: url('../imgs/startButton.png');
-	background-repeat: no-repeat;*/
+	height: 50px;
+	width:50px;
+	background-image: url('/imgs/launch-button.png');
+	background-size:50px 50px;
+	margin: auto;
 }
 
-#start:hover{
-	background-color: black;
-	color:white;
-	text-align:center;
+.leaderboard_container {
+	display: inline-block;
 }
+
+.profile_container {
+	display: inline-block;
+}
+
+.ranking_container {
+	display: inline-block;
+}
+
+.sidebar-text {
+	color:white;
+}
+/*
+#login {
+	color:white;
+}*/
