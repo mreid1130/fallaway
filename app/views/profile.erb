@@ -2,6 +2,7 @@
 	<h1><%= @player.username %>'s Profile</h1>
 	<h3>FallSpace Single Game High Scores:</h3>
 	<ul>
+		<li>High Score: <%= @player.high_fallspace_score %></li>
 		<li>Enemies Killed: <%= @player.high_badguys %></li>
 		<li>Asteroids Destroyed: <%= @player.high_asteroids %></li>
 		<li>Walls Destroyed: <%= @player.high_walls %></li>
@@ -11,5 +12,16 @@
 		<li>Total Enemies Killed: <%= @player.total_badguys %></li>
 		<li>Total Asteroids Destroyed: <%= @player.total_asteroids %></li>
 		<li>Total Walls Destroyed: <%= @player.total_walls %></li>
+	</ul>
+	<h3>Footballurrito Single Game High Scores:</h3>
+	<ul>
+		<li>High Score: <%= @player.high_footballurrito_score %></li>
+		<li>Burritos Eaten: <%= @player.high_burritos %></li>
+		<li>Opponents Tackled: <%= @player.high_opponents %></li>
+	</ul>
+	<h3>Footballurrito Total Destruction:</h3>
+	<ul>
+		<li>Total Burritos Eaten: <%= @player.total_burritos %></li>
+		<li>Total Opponents Tackled: <%= @player.total_opponents %></li>
 	</ul>
 </div>
